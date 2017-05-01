@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="">
+</head>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+
+            document.getElementById('consolelog').innerHTML = "ID: " + profile.getId();
+            document.getElementById('consolelog2').innerHTML = "Name: " + profile.getName();
+            document.getElementById('consolelog3').innerHTML = "Image URL: " + profile.getImageUrl();
+            document.getElementById('consolelog4').innerHTML = "Email: " + profile.getEmail();
+
+        }
+
+          function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              document.getElementById('logout').innerHTML = "User Signed out";
+              console.log('User signed out.');
+            });
+          }
+
+
+    </script>
+
+    <div id="logout">
+        <div id="consolelog"></div>
+        <br />
+        <div id="consolelog2"></div>
+        <br />
+        <div id="consolelog3"></div>
+        <br />
+        <div id="consolelog4"></div>
+    </div>
+
+</body>
+</html>
